@@ -1,0 +1,189 @@
+		div,p,body,ul,li,span{
+			margin:0;
+			padding:0;
+		}
+		#head{
+			height:30px;
+			background:#eee;
+		}
+		#head div.menu{
+			width:1280px;
+			height:30px;
+			margin:0 auto;
+			box-sizing:border-box;
+		}
+		#head div.menu #city{
+			float:left;
+			box-sizing:border-box;
+			position:relative;
+			z-index:10;
+		}
+
+		#head div.menu #city #listcity{
+			width:300px;
+			height:380px;
+			position:absolute;
+			top:30px;
+			left:0;
+			display:none;
+			box-shadow:-3px 5px 0 #eee;
+			overflow:auto;
+			padding:20px 20px 0 15px;
+			font-size:14px;
+			background:#fff;
+		}
+		#head div.menu #city #listcity a{
+			color:#555;
+			text-decoration:none;		
+		}
+		#head div.menu #city #listcity .city-x{
+			color:#999;
+		}
+		#head div.menu #city #listcity #hor-city{
+			padding:8px 0;
+			background:#F1F1F1;
+			margin:8px 0;
+		}
+		#head div.menu #city #listcity #hor-city a{
+			margin-right:6px;
+		}
+
+		#head div.menu #city #listcity a>li{
+			border-bottom:1px solid #eee;
+			list-style:none;
+			padding:10px 5px;
+
+		}
+		#head div.menu #city #listcity a:hover{
+			text-decoration:underline;
+			color:#64A131;
+		}
+
+		#head div.menu #city:hover #listcity{
+			display:block;
+		}
+		#head div.menu>div>p{
+			float:left;
+			margin-right:10px;
+			color:#999;
+			font-size:14px;
+			line-height:30px;
+		}
+		#head div.menu div:hover{
+			background:#fff;
+		}
+		#head div.menu #xiabiao{
+			width:0px;
+			height:0px;
+			border:7px solid transparent;
+			border-top-color:#999;
+			margin-top:12px;
+		}
+		#head div.menu>#rr{
+			float:right;
+			height:30px;
+			box-sizing:border-box;
+		}
+		#head div.menu>#rr>li{
+			list-style:none;
+			float:left;
+			font-size:12px;
+			color:#999;
+			text-align:center;
+			line-height:2.5;
+			margin-right:15px;
+			text-indent:2px;
+
+		}
+		#head div.menu #rr li a{
+			text-decoration:none;
+			color:#999;
+		}
+
+		#head div.menu #rr li a:hover{
+			text-decoration:underline;
+			color:#F6AB00;
+		}
+		#head div.menu #rr .list{
+			margin-right:10px;
+		}
+		#head div.menu #rr .list>span{
+			width:65px;
+			display:block;
+			box-sizing:border-box;
+			position:relative;
+			z-index:10;
+		}
+		#head div.menu #rr .list span>div{
+			display:none;
+			position:absolute;
+			right:0;
+			top:30px;
+			height:160px;
+			width:200px;
+			background:#fff;
+			box-shadow:0 0 3px #ddd;
+			padding-top:10px;
+		}
+		#head div.menu #rr li.list span:hover{
+			background:#fff;
+		}
+		#head div.menu #rr li.list span:hover div{
+			display:block;		
+		}
+
+		#head div.menu #rr .list span div.gonggao p{
+			border-bottom:1px dashed #ddd;
+			margin:0 10px 5px 10px;
+			width:180px;
+			text-align:left;
+		}
+		#head div.menu #rr .list span div p a{
+			color:#555;
+		}
+		#head div.menu #rr .list span div p a:hover{
+			color:#64A131;
+		}
+	#head div.menu #rr .list span div p.mo{
+			border-bottom:none;
+			text-align:center;
+		}
+
+	#head div.menu #rr .list span div.sjgy{
+		width:290px;
+		height:290px;
+		box-sizing:border-box;		
+	}
+
+	#head div.menu #rr .list span div.sjgy p{
+		color:#555;
+		width:270px;
+		font-size:12px;
+		text-align:center;
+		
+	}
+	#head div.menu #rr .list span div.sjgy .xzgy span{
+		color:#64A131;
+	}
+
+	#head div.menu #rr .list span div.sjgy .ttgywx{
+		margin-left:10px;
+		float:left;
+		border-bottom:1px solid #ddd;
+		padding-bottom:10px;
+	}
+	#head div.menu #rr .list span div.sjgy a{
+		float:right;
+		margin-right:10px;
+	}
+	#head div.menu #rr .list span div.sjgy #guan_btn01{
+		margin-top:10px;
+	}
+	#head div.menu #rr .list span div.sjgy .guan_ewcode1{
+		margin-top:15px;
+		margin-left:10px;
+	}
+	#head div.menu #rr .list span div.sjgy .guan_ewcode1 span{
+		float:left;
+		margin-left:20px;
+	}

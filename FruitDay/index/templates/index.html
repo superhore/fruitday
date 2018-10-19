@@ -1,0 +1,47 @@
+{%extends 'basic.html'%}
+{%load static%}
+{% block title%}
+  <title>天天果园</title>
+{% endblock %}
+{% block links %}
+    <link rel="stylesheet" href="{%static 'css/fruitday_index.css'%}">
+{% endblock %}
+{% block h-login %}
+        <li>
+            [<a href="#">{{msg}}</a>
+            <a href="/login_out/">{{quit}}</a>
+            <a href="/login/">{{login}}</a>]
+        </li>
+{% endblock %}
+{% block content %}
+    {% for type in goodstype %}
+    <div id='ct'>
+        <p>
+            <img src=/{{type.picture}}>
+            <a href="#" class='more'>更多 &gt;</a>
+        </p>
+
+        {% for good in goods %}
+            {% if good.goodsType_id == type.id %}
+                <div class='fruit'>
+                    <div>
+                        <a href="{% url 'prode' good.id%}">
+                            <img src=/{{good.picture}} class='tupian'>
+                        </a>
+                    </div>
+                    <a href="#" class='goodsinfo'>
+                        <p>{{good.title}}</p>
+                        <p class='price'>￥{{good.price}}/{{good.spec}}</p>
+                    </a>
+                    <a href="#" class='che'>
+                        <img src="{%static 'img/shopping_cart.png'%}">
+                    </a>
+                </div>
+            {% endif %}
+        {% endfor %}
+  </div>
+    {% endfor %}
+
+  <div>
+  </div>
+{% endblock %}

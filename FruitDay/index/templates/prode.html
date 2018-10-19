@@ -1,0 +1,89 @@
+{%extends 'basic.html'%}
+{%load static%}
+{% block title %}
+    <title>Document</title>
+{% endblock %}
+{% block links %}
+    <link rel="stylesheet" href="{%static 'css/prode.css'%}">
+{% endblock %}
+
+	{% block js %}
+	    <script src="{%static 'js/prode.js'%}"></script>
+	{% endblock %}
+{% block h-login %}
+    <li>
+        [<a href="#">{{msg}}</a>
+        <a href="/login_out/">{{quit}}</a>
+        <a href="/login/">{{login}}</a>]
+    </li>
+{% endblock %}
+ {% block content %}
+    <div id='prode'>
+		<p id='goods-index'>
+			<a href="#">首页</a>
+			&gt;
+			<a href="#">全部生鲜</a>
+			&gt;
+			<span>{{goods.title}}</span>
+		</p>
+		<div class='img-info'>
+			<p class='small-img'>
+				<a href=""><img src=/{{goods.picture}} style='width:140px'></a>
+			</p>
+			<p class='small-img'>
+				<a href=""><img src="{% static 'img/im/1-370x370-2114-WD3B3PTK.jpg' %}" style='width:140px'></a>
+			</p>
+			<p class='small-img'>
+				<a href=""><img src="{% static 'img/im/1-370x370-2114-SB1F5C9F.jpg' %}" style='width:140px'></a>
+			</p>
+			<p class='small-img'>
+				<a href=""><img src="{% static 'img/im/1-370x370-2114-58HKP8X2.jpg' %}" style='width:140px'></a>
+			</p>
+
+		</div>
+		<div class='img-info'>
+			<img src=/{{goods.picture}} style='width:560px'>
+		</div>
+		<div class='goods-info'>
+			<h3>{{googs.title}}</h3>
+			<h4>淡淡的祝福 深深的情意</h4>
+			<p id='goods-price'>果园价￥{{goods.price}}</p>
+			<p>规格<p id='guige'>{{goods.spec}}</p></p>
+			<p>配送至</p>
+			<p>数量
+				<button id='bu-down'>-</button>
+				<input type="text" id='bu-count' value='1'>
+				<button id='bu-up'>+</button>
+
+			</p>
+			<p>
+				<a href="/cart/addcart/?goodsid={{goodsid}}&gcount=" id='buynow'>立即购买</a>
+				<a href="#" id="addcart">加入购物车</a>
+			</p>
+			<p>存储方法 常温 商品编号 <span id="gid">{{goods.id}}</span></p>
+		</div>
+	</div>
+     <script>
+     var addcart = $('#addcart');
+
+     addcart.click(function(){
+         var gc = $('#bu-count').val();
+         var gid = $('#gid').html();
+		$.ajax({
+				url:'/cart/addcart',
+				data:{'gcount':gc,'goodsid':gid},
+				type:'get',
+				datatype:"json",
+				success:function(data){
+
+                    console.log(data);
+
+				},
+				error:function(err){
+					alert('fail');
+				}
+							});
+	});
+	</script>
+
+ {% endblock %}

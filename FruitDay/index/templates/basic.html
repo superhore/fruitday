@@ -1,0 +1,170 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>Title</title>
+    {% endblock %}
+        <link rel="stylesheet" href="{%static 'css/head.css'%}">
+        <link rel="stylesheet" href="{%static 'css/bottom.css'%}">
+    {% block links %}{% endblock %}
+    <script src="{%static '/js/jquery-1.11.3.js'%}"></script>
+    {%block js %}{% endblock %}
+</head>
+<body>
+    <div id='head'>
+	<div class='menu'>
+		<div id='city'>
+			<p id='add'>上海</p>
+			<p id='xiabiao'></p>
+			<div id='listcity'>
+				<span class='city-x'>热门城市</span>
+				<p id='hor-city'>
+					<a href="#">上海</a>
+					<a href="#">广州</a>
+					<a href="#">北京</a>
+					<a href="#">苏州</a>
+					<a href="#">南京</a>
+					<a href="#">深圳</a>
+				</p>
+				<span class='city-x'>选择城市</span>
+				<p id='city-y'>
+					<ul>
+						<a href=""><li>深圳</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+						<a href=""><li>上海</li></a>
+					</ul>
+				</p>
+			</div>
+		</div>
+		<ul id='rr'>
+            {% block  h-login%}
+            <li>[<a href="#">登录</a></a>]</li>
+            {% endblock %}
+			<li><a href="/register/">[注册有惊喜]</a></li>
+			<li>|</li>
+			<li class='list'>
+				<span>
+					果园公告
+					<div class='gonggao'>
+						<p><a href="#">全仓充值活动调整公告</a></p>
+						<p><a href="#">全仓充值活动调整公告</a></p>
+						<p><a href="#">全仓充值活动调整公告</a></p>
+						<p class='mo'><a href="#">查看更多&gt;</a></p>
+					</div>
+				</span>
+			</li>
+			<li>|</li>
+			<li><a href="#">券卡兑换</a></li>
+			<li>|</li>
+			<li class='list'>
+				<span>
+					手机果园
+					<div class='sjgy'>
+						<p class='xzgy'>
+							<span>
+								下载果园app,
+							</span>
+								即享果园特价商品
+						</p>
+						<p class='ttgywx'>
+							<img src="{%static 'img/guan_ewcode2.jpg'%}" width='100px' height='100px' align='left'>
+
+								<a href="#" id='guan_btn01'><img src="{%static 'img/guan_btn01.jpg'%}"></a>
+								<a href="#"><img src="{%static 'img/guan_btn02.jpg'%}"></a>
+						</p>
+						<p class='guan_ewcode1'>
+							<img src="{%static 'img/guan_ewcode1.jpg'%}" width='100px' height='100px' align='left'>
+							<span>关注果园微信</span>
+							<span>优惠信息实时掌握</span>
+						</p>
+					</div>
+				</span>
+			</li>
+		</ul>
+	</div>
+	</div>
+    {%block content%}
+
+    {%endblock%}
+    <div id='d1'>
+		<p></p>
+		<p id='a1'></p>
+		<p id='a2'></p>
+		<p id='a3'></p>
+	</div>
+	<div id='w-logo'>
+		<div id='weixin'>
+			<p>
+				<img src="{%static 'img/guan_ewcode1.jpg'%}">
+				天天果园官方微信
+			</p>
+			<p id='t-weixin'>
+				<img src="{%static 'img/guan_ewcode2.jpg'%}">
+				天天果园APP
+			</p>
+		</div>
+		<div id='shuoming'>
+			<ul id='head-one'>
+				<li>
+					<h4>购物指南</h4>
+					<a href="#">新用户注册</a>
+					<a href="#">在线下单</a>
+					<a href="#">支付方式</a>
+				</li>
+				<li>
+					<h4>配送说明</h4>
+					<a href="#">运费说明</a>
+					<a href="#">运费方式</a>
+					<a href="#">发票说明</a>
+				</li>
+
+				<li>
+					<h4>售后服务</h4>
+					<a href="#">退换货规则</a>
+					<a href="#">服务保障承诺</a>
+					<a href="#">验货与签收</a>
+				</li>
+				<li>
+					<h4>企业服务</h4>
+					<a href="#">企业订购</a>
+					<a href="#">公司简介</a>
+					<a href="#">定制专区</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id='beian'>
+		<p class='banquan'>
+			版权所有 &copy;2018上海天天鲜果电子商务有限公司  保留所有权利 |
+			<a href="#">沪ICP备12042163</a>
+		</p>
+		<p id='wenzi'>天天果园  鲜果网购</p>
+		<p>
+			<a href="#">
+				<img src="{%static 'img/guan_shgs.gif'%}">
+			</a>
+			<a href="#">
+				<img src="{%static 'img/guan_wgdjp.png'%}" class='wangping'>
+			</a>
+		</p>
+	</div>
+</body>
+</html>

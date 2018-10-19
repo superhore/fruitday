@@ -1,0 +1,141 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}
+  <title>地址信息</title>
+{% endblock %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/ads.css' %}">
+{% endblock %}
+{% block js %}
+    <script src="{% static 'js/ads.js' %}"></script>
+{% endblock %}
+
+ {% block h-login %}
+    <li>
+        [<a href="#">{{msg}}</a>
+        <a href="/login_out/">{{quit}}</a>
+    </li>
+ {% endblock %}
+{% block content %}
+    <div id="ad-ct">
+  <h3>填写并核对订单信息</h3>
+	<p>
+		<ul>
+			<li><h4>新增地址</h4></li>
+			<li>收货人：<input type="text" id='aname'></li>
+			<li>收货人电话：<input type="text" id='cellphone'></li>
+			<li>收货地址：<textarea name="dizhi" id="dizhi" cols="30" rows="10"></textarea>	</li>
+			<li><button id='bu-add'>新增</button></li>
+		</ul>
+	</p>
+	<table id='ad-tb'>
+		<thead id='ad-thead'>
+			<tr>
+					<td>选择</td>
+					<td>收货人</td>
+					<td>收货人电话</td>
+					<td>收货地址</td>
+					<td>操作</td>
+			</tr>
+		</thead>
+		<tbody id='ad-tbody'>
+        {% for ads in adss %}
+        <tr>
+            <td><input type="radio" name="seled" value={{ ads.id }}></td>
+            <td>{{ ads.aname }}</td>
+            <td>{{ ads.cellphone }}</td>
+            <td>{{ ads.address }}</td>
+            <td>
+                <button onclick="editads(this,{{ ads.id }})">编辑</button>
+                <button onclick="delads(this,{{ ads.id }})">删除</button>
+            </td>
+
+        </tr>
+        {% endfor %}
+		</tbody>
+	</table>
+	<p>
+		<h3>配送信息</h3>
+		<ul>
+
+            {% for cart in carts %}
+                {% for good in goods %}
+                    {% if cart.goods_id == good.id %}
+                        <li>
+                        <img src=/{{good.picture}} style="width:80px">
+                        <span>{{ good.title }}</span>
+                        <span>数量：＊{{ cart.gcount }}</span>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+
+		</ul>
+	</p>
+	<p id='ordered'>
+		<span>应付金额</span><span>￥1000</span><span><a href="#">提交订单</a></span>
+	</p>
+	</div>
+    <script>
+        function editads(obj,adsid){
+		if($(obj).html() == '编辑'){
+            if(confirm('确定要修改？')){
+                $(obj).html('确定');
+                // 获取td中的内容
+                var tdaname = $(obj).parent().prev().prev().prev().html();
+                var tdcellphone = $(obj).parent().prev().prev().html();
+                var tdaddress = $(obj).parent().prev().html();
+                // 创建input标签
+                var aname = $("<input>");
+                var cellphone = $("<input>");
+                var address = $("<input>");
+                // 将td内容付给input
+                aname.val(tdaname);
+                cellphone.val(tdcellphone);
+                address.val(tdaddress);
+                // 清空td内容
+                $(obj).parent().prev().prev().prev().empty();
+                $(obj).parent().prev().prev().empty();
+                $(obj).parent().prev().empty();
+                // 将input插入该td内
+                $(obj).parent().prev().prev().prev().append(aname);
+                $(obj).parent().prev().prev().append(cellphone);
+                $(obj).parent().prev().append(address);
+            }
+        }else{
+			alert('aaa');
+			var newaname = $(obj).parent().prev().prev().prev().children('input').val();
+			var newcellphone = $(obj).parent().prev().prev().children('input').val();
+			var newaddress = $(obj).parent().prev().children('input').val();
+			$(obj).html('编辑');
+			$.ajaxSetup({
+				data:{csrfmiddlewaretoken:'{{ csrf_token }}'}
+			});
+			$.ajax({
+				url:'/address/editads',
+				data:{
+					'adsid':adsid,
+					'aname':newaname,
+					'cellphone':newcellphone,
+					'address':newaddress
+				},
+				type:'post',
+				datatype:'json',
+				success:function(data){
+					console.log('ok');
+					$(obj).parent().prev().prev().prev().empty();
+                    $(obj).parent().prev().prev().empty();
+                    $(obj).parent().prev().empty();
+                    $(obj).parent().prev().prev().prev().html(newaname);
+                    $(obj).parent().prev().prev().html(newcellphone);
+                    $(obj).parent().prev().html(newaddress);
+				},
+				error:function(err){
+					console.log('fail');
+				}
+				});
+		};
+	};
+    </script>
+{% endblock %}
+

@@ -1,0 +1,151 @@
+{%extends 'basic.html'%}
+{%load static%}
+{% block title %}
+    <title>Document</title>
+{% endblock %}
+{% block links %}
+    <link rel="stylesheet" href="{%static 'css/cart.css'%}">
+{% endblock %}
+
+{% block h-login %}
+    <li>
+        [<a href="#">{{msg}}</a>
+        <a href="/login_out/">{{quit}}</a>
+    </li>
+{% endblock %}
+{% block content %}
+    <div id='cartcontent'>
+		<h3>我的购物车 <span style="float:right;"><a href="/">继续购买</a></span></h3>
+		<table id='carttb'>
+			<thead>
+				<tr>
+					<td>选择</td>
+					<td>商品</td>
+					<td>规格</td>
+					<td>单价</td>
+					<td>数量</td>
+					<td>总价</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<tbody>
+			{%for cart in carts%}
+                {% for g in goods %}
+                    {% if cart.goods_id == g.id %}
+                        <tr>
+                            <td><input type="checkbox" class="check" name="check" value="{{ cart.id }}"></td>
+                            <td align="left">
+                                <a href="/">
+                                    <img src=/{{g.picture}} style="width:100px;margin:5px 5px;">
+                                </a>
+                                <span>{{g.title}}</span>
+                            </td>
+                            <td>{{g.spec}}</td>
+                            <td>{{g.price}}</td>
+                            <td>
+                                <button onclick="data_down(this)">-</button>
+                                <input type="text" style='width:25px;' value={{cart.gcount}}>
+                                <button onclick="data_up(this)">+</button>
+                            </td>
+                            <td></td>
+                            <td><a onclick="delcart(this,{{cart.id}})">删除</a></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {%endfor%}
+			</tbody>
+		</table>
+		<p id='jiesuan'>
+
+			全选<input type="checkbox" id='allcheck'>
+			已选择
+			<span id="sel"></span>
+			商品 | 订单金额
+			<span>￥396.00</span>
+			<span><a href="/address/?cartids=" onclick="toads(this)">去结算</a></span>
+		</p>
+
+		</div>
+		<script src="{%static 'js/jquery-1.11.3.js'%}"></script>
+		<script>
+                var allcheck = $('#allcheck');
+                var sel = Number($("input:checked").length);
+                $('#sel').html(sel+'件');
+                allcheck.click(function(){
+                    if(this.checked){
+                        $(".check").prop('checked',true);
+                        sel = Number($("input:checked").length)-1;
+                    }else{
+
+                        $(".check").prop('checked',false);
+                        sel = 0;
+                    };
+                    $('#sel').html(sel+'件');
+                });
+
+                $('.check').click(function(){
+                    if(this.checked){
+                        sel++;
+                    }else{
+                        sel--;
+                    };
+                    $('#sel').html(sel+'件');
+                });
+
+                function toads(obj){
+                    var temp = [];
+                    var ch = $("input[name='check']");
+                    for(var i=0;i<ch.length;i++){
+                        if(ch[i].checked){
+                            var a = ch[i].value;
+                            temp.push(a);
+                        };
+                    };
+                    var ht = $(obj).attr('href');
+                    var cht = ht + temp;
+                    $(obj).attr('href',cht);
+                };
+
+                function delcart(obj,cart_id){
+
+                        if(confirm('确认要删除吗？')){
+                            $.ajax({
+                                url:'/delcart',
+                                data:{
+                                    'cart_id':cart_id
+                                },
+                                type:'get',
+                                datatype:'json',
+                                success:function(data){
+                                    $(obj).parent().parent().remove();
+                                },
+                                error:function(err){
+                                    alert('del fail');
+                                }
+                            });
+                        }};
+
+                function data_up(up_d){
+                    var num = Number($(up_d).prev().val());
+                    var gprice = Number($(up_d).parent().prev().html());
+                    var tprice = $(up_d).parent().next();
+                    $(up_d).prev().val(++num);
+                    tprice.html('￥'+gprice *num);
+                };
+                function data_down(down_d){
+                    var num = Number($(down_d).next().val());
+                    var gprice = Number($(down_d).parent().prev().html());
+                    var tprice = $(down_d).parent().next();
+                    if(num<=1){
+                        num=1;
+                    }else{
+                        num--;
+                    };
+                    $(down_d).next().val(num);
+                    tprice.html('￥'+gprice *num);
+                };
+
+		</script>
+{% endblock %}
+
+

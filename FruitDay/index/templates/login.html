@@ -1,0 +1,82 @@
+{% extends 'basic.html' %}
+{%load static%}
+  {%block title%}
+  <title>会员登录</title>
+  {%endblock%}
+{% block links %}
+    <link rel="stylesheet" href="{%static '/css/login.css'%}">
+{% endblock %}
+	{%block js%}{%endblock%}
+{% block h-login %}
+        <li>
+            <a href="/login/">[登录]</a>
+        </li>
+{% endblock %}
+{% block content %}
+  <div id="login-content">
+  <div id="container">
+		<h2 class="title">
+		{%block title1%}
+			会员登录 <span style='float:right'>{{msg}}</span> 
+		{%endblock%}
+
+		</h2>	
+		<!-- 下 左 ：图片 -->
+		<p>
+			<img src="{%static '/img/huiyuan.jpg'%}">
+			{%block anchor%}
+				<a href="{%url 'register'%}">会员注册&gt;</a>
+			{%endblock%}
+		</p>
+		<!-- 下 右 ：登录form -->
+		<div id="login">
+			{%block from%}
+			<form action="/login/" method="post">
+				{%csrf_token%}
+                    <p>
+                        {{err}}
+                    </p>
+                <div class="form-line">
+					<p>手机号</p>
+					<div>
+						<input type="text" name="uphone" class="form-control">
+					</div>
+				</div>
+				<!-- 第二行：密码 -->
+				<div class="form-line">
+					<p>密码</p>
+					<div>
+						<input type="password" name="upwd" class="form-control">
+					</div>
+				</div>
+
+				<!-- 第三行：记住密码 -->
+	
+				<div class="form-line">
+					<p></p>
+					<div>
+						<p>
+							<a href="#">忘记密码</a>
+							<a href="#">快捷登录</a>
+						</p>
+						<input type="checkbox" name="isSaved" class="isSaved" id="isSaved">
+						<label for="isSaved">记住密码</label>
+					</div>
+				</div>
+	
+				<!-- 第四行：登录 & 注册会员 -->
+				<div class="form-line">
+					<p></p>
+					<div>
+						<a href="{%url 'register'%}" class="register">注册会员</a>
+						
+						<input type="submit" value="登录" class="btnLogin">
+						
+					</div>
+				</div>
+			</form>
+			{%endblock%}
+		</div>
+	</div>
+    </div>
+ {% endblock %}

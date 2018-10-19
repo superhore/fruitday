@@ -1,0 +1,38 @@
+#ad-ct{
+	margin:0 auto;
+	width:1300px;
+	
+}
+#ad-ct #ad-tb{
+	width:1000px;
+	text-align:center;
+	border:1px solid #000;
+	margin:0 auto;
+	border-collapse:collapse;
+}
+
+
+#ad-ct #ad-tb #ad-thead>tr{
+	height:50px;
+	background:#eee;
+}
+
+#ad-ct #ad-tb tr td{
+border:1px solid #000;
+}
+
+#ad-ct #ordered{
+	border:1px solid #000;
+	width:1300px;
+	height:50px;
+	text-align:right;
+	line-height:50px;
+	background:#eee;
+	margin-top:20px;
+}
+
+#ad-ct #ordered>span{
+	padding:15px;
+
+	
+}

@@ -1,0 +1,59 @@
+div,p,a{
+	margin:0;
+}
+#ct{
+	width:1300px;
+	border-bottom:1px solid #CDCDCD;
+	margin:0 auto;
+	overflow:hidden;
+	padding-bottom:60px;
+	position:relative;
+}
+#ct a.more{
+	text-decoration:none;
+	color:#333;
+	font-size:14px;
+	position:absolute;
+	right:0;
+	top:10px;
+}
+#ct a.more:hover{
+	text-decoration:underline;
+}
+#ct .fruit{
+	height:300px;
+	float:left;
+	margin:5px;
+	position:relative;
+}
+
+#ct .fruit>div{
+	width:250px;
+	height:250px;
+	overflow:hidden;
+	margin-bottom:5px;
+}
+
+#ct .fruit .che{
+	position:absolute;
+	bottom:0;
+	right:0;
+}
+
+#ct .fruit .tupian{
+	transition:all 500ms;
+}
+
+#ct .fruit .tupian:hover{
+	transform:scale(1.1);
+}
+
+#ct .fruit a.goodsinfo{
+	color:#555;
+	text-decoration:none;
+	font-size:14px;
+}
+
+#ct .fruit a.goodsinfo p.price{
+	color:#999;
+}

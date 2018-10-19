@@ -1,0 +1,46 @@
+div,p{
+	margin:0;
+}
+#prode{
+	width:1300px;
+	margin:0 auto;
+	overflow:auto;
+	position:relative;
+}
+
+#prode>#goods-index{
+	margin-top:50px;
+	margin-bottom:20px;
+}
+#prode>div.img-info{
+	float:left;
+
+	
+}
+
+#prode>div.img-info>p.small-img img:hover{
+	border:1px solid #8FB13D;
+	box-sizing:border-box;
+	box-shadow:0 0 1px #8FB13D;
+}
+
+#prode>div.goods-info{
+	float:left;
+	margin-left:30px;
+}
+
+#prode #guige{
+	width:65px;
+	height:25px;
+	border:1px solid #8FB13D;
+	background:#64A131;
+	
+}
+
+#prode #goods-price{
+	width:550px;
+	height:75px;
+	background:#F4F2E6;
+	line-height:75px;
+	padding-left:10px;
+}
